@@ -1,0 +1,26 @@
+import { deals } from "../data/deals";
+import { simulateRequest, nextId, today } from "./mockApi";
+
+export function getDeals() {
+  return simulateRequest(deals);
+}
+
+export function getDealById(id) {
+  const deal = deals.find((d) => d.id === Number(id)) ?? null;
+  return simulateRequest(deal);
+}
+
+export function getDealsByCompany(companyId) {
+  const result = deals.filter((d) => d.companyId === Number(companyId));
+  return simulateRequest(result);
+}
+
+export function createDeal(payload) {
+  const deal = {
+    ...payload,
+    id: nextId(deals),
+    createdAt: today(),
+  };
+  deals.push(deal);
+  return simulateRequest(deal);
+}
