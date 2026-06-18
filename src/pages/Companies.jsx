@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/ui/PageHeader";
 import SearchInput from "../components/ui/SearchInput";
 import Spinner from "../components/ui/Spinner";
@@ -29,6 +30,7 @@ const columns = [
 ];
 
 function Companies() {
+  const navigate = useNavigate();
   const { data: companies, loading, error } = useFetch(getCompanies);
   const [search, setSearch] = useState("");
   const [industry, setIndustry] = useState("all");
@@ -91,6 +93,7 @@ function Companies() {
           <Table
             columns={columns}
             data={filtered}
+            onRowClick={(row) => navigate(`/companies/${row.id}`)}
             emptyMessage="Aucune entreprise ne correspond à votre recherche."
           />
         </>

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import Companies from "./pages/Companies";
+import CompanyDetail from "./pages/CompanyDetail";
 import Contacts from "./pages/Contacts";
 import Deals from "./pages/Deals";
 import NotFound from "./pages/NotFound";
@@ -12,6 +13,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="companies" element={<Companies />} />
+        <Route path="companies/:id" element={<CompanyDetail />} />
         <Route path="contacts" element={<Contacts />} />
         <Route path="deals" element={<Deals />} />
       </Route>
